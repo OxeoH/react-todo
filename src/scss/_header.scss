@@ -1,0 +1,30 @@
+@import './variables';
+
+.header{
+    border: 6px solid $orange;
+    display: flex;
+    flex-direction: column;
+    background-color: $lime;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto;
+    max-width: 800px;
+    padding: 26px 15px 0 15px;
+    border-radius: 40px;
+    &__row{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        &-items{
+            margin-right: 40px;
+            padding: 20px 30px;
+            align-items: center;
+            justify-content: center;
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+        
+    }
+}
