@@ -1,4 +1,17 @@
-$lime: rgb(216, 255, 145);
-$mainBlack: rgb(16, 16, 16);
-$orange: rgb(255, 211, 158);
-$specialGrey:rgb(173, 182, 176);
+$specialGrey:rgb(53, 55, 69);
+$mintOcean:rgb(191, 217, 215);
+$textWhite: rgb(230, 236, 243);
+$yellow: rgb(221, 187, 77);
+
+$specialGreyShadow:rgb(38, 40, 49);
+$mintOceanShadow:rgb(125, 155, 153);
+
+
+@mixin block {
+    box-shadow: 4px 6px 6px $specialGreyShadow;
+    background-color: $mintOcean;
+    max-width: 900px;
+    padding: 16px;
+    border-radius: 40px;
+    margin: 20px auto;
+}

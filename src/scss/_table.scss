@@ -1,14 +1,11 @@
 @import './variables';
 
 .table{
-    border: 6px solid $orange;
+    @include block;
+    
     display: flex;
     flex-direction: column;
-    background-color: $lime;
     align-items: center;
     justify-content: center;
-    margin: 20px auto;
-    max-width: 800px;
     padding: 40px 30px 20px 30px;
-    border-radius: 40px;
 }

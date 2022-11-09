@@ -4,5 +4,20 @@
 @import './all';
 
 body{
-    background-color: $mainBlack;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    color: $textWhite;
+    background-color: $mintOcean;
+    padding: 40px;
+}
+.main{
+    align-items: center;
+    justify-content: center;
+    background-color: $specialGrey;
+    box-shadow: 10px 6px 6px $mintOceanShadow;
+    padding: 60px 15px;
+    margin: 0 auto;
+    border-radius: 40px;
 }

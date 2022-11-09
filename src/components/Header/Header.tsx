@@ -1,5 +1,5 @@
 import React from 'react'
-import logoSrc from "../../assets/img/logo.svg";
+import logoSrc from "../../assets/img/logo.png";
 import Filter from '../Filter/Filter';
 import Search from '../Search/Search';
 import styles from './Header.module.scss' 

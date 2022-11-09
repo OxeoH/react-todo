@@ -1,16 +1,12 @@
 @import './variables';
 
 .header{
-    border: 6px solid $orange;
+    @include block;
+
     display: flex;
-    flex-direction: column;
-    background-color: $lime;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    margin: 40px auto;
-    max-width: 800px;
-    padding: 26px 15px 0 15px;
-    border-radius: 40px;
+    justify-content: space-around;
     &__row{
         display: flex;
         flex-direction: row;
