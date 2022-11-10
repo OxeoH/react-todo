@@ -6,15 +6,15 @@ import styles from './Header.module.scss'
 
 const Header: React.FC = () => {
   return (
-    <div className='header'>
-      <div className="header__logo">
+    <div className={styles.header}>
+      <div className={styles.logo}>
       <img className={styles.img} src={logoSrc} alt="OneMoreDealLogo" />
       </div>
-      <ul className="header__row">
-          <li className="header__row-items">
+      <ul className={styles.row}>
+          <li className={styles.item}>
             <Search/>
           </li>
-          <li className="header__row-items">
+          <li className={styles.item}>
             <Filter/>
           </li>
         </ul>

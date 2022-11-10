@@ -1,9 +1,39 @@
-.root{
+@import '../../styles/variables';
+
+
+
+
+.header{
+    @include block;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logo{
 
 }
+
 .img{
     width: 100%;
     object-fit: cover;
-    display: flexbox;
-    flex: auto;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+.item{
+    margin-right: 40px;
+    padding: 20px 30px;
+    align-items: center;
+    justify-content: center;
+    &:last-child{
+        margin-right: 0;
+    }
 }

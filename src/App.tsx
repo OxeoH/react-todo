@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/app.scss';
+import './styles/app.scss';
 import Contacts from './components/Contacts/Contacts';
 import Header from './components/Header/Header';
 import Table from './components/Table/Table';

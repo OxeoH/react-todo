@@ -1,0 +1,26 @@
+@import '../../styles/variables';
+
+.contacts{
+    
+}
+
+.wrapper{
+    @include block;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.list{
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.link{
+    margin-right: 40px;
+}
