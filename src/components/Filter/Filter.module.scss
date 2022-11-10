@@ -1,0 +1,57 @@
+@import '../../styles/variables';
+
+.wrapper{
+    padding: 14px;
+    background-color: $specialGrey;
+    border-radius: 2rem;
+    position: relative;
+    box-shadow: 2px 4px 4px $mintOceanShadow;
+}
+
+.value{
+    color: $yellow;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 1rem;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.2);
+    &:hover{
+        transition: 0.2s ease-in 0s;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+    
+}
+.popup{
+    top: 90%;
+    right: 10px;
+    padding: 10px;
+    position: absolute;
+    width: 8rem;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: 4px 4px 4px $specialGreyShadow;
+}
+
+.sorts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sort{
+    text-align: center;
+    color: $yellow;
+    font-weight: 500;
+    padding: 6px 10px;
+    margin-bottom: 4px;
+    border-radius: 1rem;
+    &:last-child{
+        margin-bottom: 0;
+    }
+    &:hover{
+        transition: 0.2s ease-in 0s;
+        background-color: $mintOcean;
+    }
+    cursor: pointer;
+}

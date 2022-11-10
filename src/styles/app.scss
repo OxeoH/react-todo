@@ -2,20 +2,20 @@
 @import './libs/normalize';
 
 body{
-    max-width: 1100px;
+    max-width: 1080px;
     margin: 0 auto;
     align-items: center;
     justify-content: center;
     color: $textWhite;
     background-color: $mintOcean;
-    padding: 40px;
+    padding: 20px;
 }
 .main{
     align-items: center;
     justify-content: center;
     background-color: $specialGrey;
     box-shadow: 10px 6px 6px $mintOceanShadow;
-    padding: 60px 15px;
+    padding: 50px 10px;
     margin: 0 auto;
     border-radius: 40px;
 }
