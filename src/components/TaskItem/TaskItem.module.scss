@@ -5,13 +5,14 @@
     @include block;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: $specialGrey;
     padding: 10px 20px;
     text-align: center;
     font-weight: 700;
     font-size: 16px;
+    width: 100%;
 }
 
 .counter{
@@ -21,11 +22,11 @@
     background-color: $specialGrey;
     border: 4px solid $yellow;
 }
-.description{
+.title{
     margin-right: 30px;
 }
 .checker{
-    margin-right: 10px;
+    margin-right: 20px;
 }
 .deleter{
     text-align: center;
@@ -35,4 +36,11 @@
         width: 2rem;
         object-fit: cover;
     }
+}
+
+.toolsWrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
