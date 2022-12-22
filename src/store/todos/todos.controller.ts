@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import { GroupType } from "../groups/groups.types";
 import { Todo } from "./todos.types";
 
 class Todos{
@@ -23,17 +24,14 @@ class Todos{
     }
 
     changeTodoStatus(id: number){
-        this.todo.map((item) => item.id === id ? {...item, completed: !item.completed}: item) 
-    }
-
-    async fetchTodos(){
-        try{
-            const responce = await fetch('https://6348936e0b382d796c73f4b1.mockapi.io/todos')
-            const todosList = await responce.json()
-            this.todo = todosList
-        }catch(error){
-            console.log("FetchTodosError: Error parsing todos");
+        const todoIndex = this.todo.findIndex(todo => todo.id === id)
+        if(todoIndex < 0) {
+            //console.log("");
+            return null
         }
+        const todoItem = this.todo[todoIndex]
+        todoItem.completed = !todoItem.completed   
+        //this.todo.map((item) => item.id === id ? {...item, completed: !item.completed}: item) 
     }
 
 }

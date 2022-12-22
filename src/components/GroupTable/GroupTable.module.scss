@@ -1,0 +1,10 @@
+@import '../../styles/variables';
+
+.table{
+    @include block;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    justify-items: center;
+    gap: 40px;
+    padding: 40px 30px 20px 30px;
+}

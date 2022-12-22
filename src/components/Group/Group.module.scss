@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+
+
+
+.wrapper{
+    width: 240px;
+    height: 240px;  
+    border-radius: 12%;
+    justify-content: left;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: $specialGrey;
+    box-shadow: 10px 6px 6px $mintOceanShadow;
+    &:hover{
+        transition: 0.8s ease 0s;
+        box-shadow: none;
+        background-color: $specialGreyShadow;
+    }
+}
+.name{
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    text-align: left;
+}
+.counter{
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    span{
+        color: rgba(255, 255, 255, 0.5);
+    }
+}
