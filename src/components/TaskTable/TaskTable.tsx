@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import groupsController from '../../store/groups/groups.controller'
 import { Todo } from '../../store/todos/todos.types'
 import { observer } from 'mobx-react-lite'
+import CreatePopup from '../CreatePopup/CreatePopup'
 
 
 const TaskTable: React.FC = observer(() => {
@@ -24,13 +25,16 @@ const TaskTable: React.FC = observer(() => {
     }
     
   return (
-    <div className={styles.table}>
-        <div className={styles.tools}>
-          <button onClick={() => groupsController.removeAllByGroup(id ? id : '')}>Clear All Tasks</button>
-          <button onClick={() => showTaskCreator(id ? id : '')}>Create New Task</button>
-        </div>
-        {tasks && tasks.map(task => <TaskItem key={task.id} id={task.id} title={task.title} completed={task.completed} group={task.group} />)}
-    </div>
+    <>
+      {popupVisibility && <CreatePopup/>}
+      <div className={styles.table}>
+          <div className={styles.tools}>
+            <button onClick={() => groupsController.removeAllByGroup(id ? id : '')}>Clear All Tasks</button>
+            <button onClick={() => showTaskCreator(id ? id : '')}>Create New Task</button>
+          </div>
+          {tasks && tasks.map(task => <TaskItem key={task.id} id={task.id} title={task.title} completed={task.completed} group={task.group} />)}
+      </div>
+    </>
   )
 })
 
