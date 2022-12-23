@@ -23,16 +23,7 @@ class Todos{
         this.todo.push(todo)
     }
 
-    changeTodoStatus(id: number){
-        const todoIndex = this.todo.findIndex(todo => todo.id === id)
-        if(todoIndex < 0) {
-            //console.log("");
-            return null
-        }
-        const todoItem = this.todo[todoIndex]
-        todoItem.completed = !todoItem.completed   
-        //this.todo.map((item) => item.id === id ? {...item, completed: !item.completed}: item) 
-    }
+    
 
 }
 export default new Todos()
