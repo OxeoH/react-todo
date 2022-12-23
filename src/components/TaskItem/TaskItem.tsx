@@ -11,7 +11,7 @@ const TaskItem: React.FC<Todo> = observer(({id, title, completed, group}) => {
         <div className={styles.counter}>{id}</div>
         <div className={styles.title}>{title}</div>
         <div className={styles.toolsWrapper}>
-          <input type="checkbox" className={styles.checker} defaultChecked={completed} onChange={() => groupsController.changeTodoStatus(id)}/>
+          <input type="checkbox" className={styles.checker} defaultChecked={completed} onChange={() => groupsController.changeTodoStatus(id, group)}/>
           <div className={styles.deleter} onClick={() => groupsController.removeTodo(id, group)}>
             <img src={cross} alt="X"/>
           </div>

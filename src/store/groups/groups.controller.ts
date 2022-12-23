@@ -43,9 +43,14 @@ class Groups{
         }
         return index
     }
- 
-    findTodoIndex(todoId:string){
-        
+
+    findTodoIndex(id: number, groupIndex: number){
+        const index = this.groups[groupIndex].items.findIndex(task => task.id === id)
+        if(index < 0) {
+            console.log("Error: cannot find task by index ", id);
+            return
+        }
+        return index
     }
 
 
@@ -60,25 +65,29 @@ class Groups{
 
     removeTodo(taskId: number, groupId: number){    
         const groupIndex = this.findGroupIndex(`${groupId}`)
-        console.log("Group INdex: \n\n", groupIndex);
 
         if(typeof(groupIndex) !== 'undefined' && groupIndex >= 0){
             const taskItem = this.groups[groupIndex].items.find(item => item.id === taskId)
             this.groups[groupIndex].items = this.groups[groupIndex].items.filter((task) => task !== taskItem)
+            return
         }
         console.log("Error: cannot find group by index ", groupId)
-        return
     }   
 
-    changeTodoStatus(id: number){
-        // const todoIndex = this.group.findIndex(todo => todo.id === id)
-        // if(todoIndex < 0) {
-        //     //console.log("");
-        //     return null
-        // }
-        // const todoItem = this.todo[todoIndex]
-        // todoItem.completed = !todoItem.completed   
-        //this.todo.map((item) => item.id === id ? {...item, completed: !item.completed}: item) 
+    changeTodoStatus(taskId: number, groupId: number){
+        const groupIndex = this.findGroupIndex(`${groupId}`)
+        
+        if(typeof(groupIndex) !== 'undefined' && groupIndex >= 0){
+            const taskIndex = this.findTodoIndex(taskId, groupIndex)
+            if((typeof(taskIndex) !== 'undefined' && taskIndex >= 0)){
+                const task = this.groups[groupIndex].items[taskIndex]
+                task.completed = !task.completed
+                return
+            }
+            console.log("Error: cannot find task by index ", taskId)
+            return
+        } 
+        console.log("Error: cannot find group by index ", groupId)
     }
 }
 
