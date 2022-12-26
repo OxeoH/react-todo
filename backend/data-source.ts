@@ -1,5 +1,8 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
+import { Group } from "./src/Groups/groups.entity"
+import { Todo } from "./src/Todo/todo.entity"
+import { User } from "./src/User/user.entity"
 
 
 const AppDataSource = new DataSource({
@@ -10,7 +13,7 @@ const AppDataSource = new DataSource({
     password: process.env.DB_PASSWORD?.toString(),
     database: process.env.DB_NAME,
     synchronize: true,
-    entities: [],
+    entities: [User, Group, Todo],
 })
 
 

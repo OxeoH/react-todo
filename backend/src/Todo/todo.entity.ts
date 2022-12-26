@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm"
+import { Group } from "../Groups/groups.entity"
 
 @Entity()
 export class Todo {
@@ -11,5 +12,6 @@ export class Todo {
     @Column()
     completed: boolean
 
-    //group
+    @ManyToOne(() => Group, (group) => group.items)
+    group: Group
 }
