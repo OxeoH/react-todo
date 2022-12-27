@@ -4,17 +4,18 @@ dotenv.config()
 import express, { Request, Response } from "express";
 import cors from "cors"
 import AppDataSource from './data-source';
+import userRouter from './src/User/user.router';
+import bodyParser from 'body-parser';
 
 const app = express()
 
+app.use(bodyParser.json())
+app.use("/user", userRouter)
 
 app.use(express.json())
 app.use(cors())
 
 const port = process.env.PORT || 5000;
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello world!');
-});
 
 const startTodoServer = async () => {
   try{
