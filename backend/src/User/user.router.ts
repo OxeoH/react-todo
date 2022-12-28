@@ -3,7 +3,7 @@ import userController from "./user.controller";
 
 const userRouter = Router()
 
-userRouter.get('/login', async (req: Request, res: Response) => {
+userRouter.post('/login', async (req: Request, res: Response) => {
     await userController.authUser(req, res)
 })
 
