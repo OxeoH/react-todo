@@ -5,6 +5,8 @@ import Header from './components/Header/Header';
 import GroupTable from './components/GroupTable/GroupTable';
 import { Routes, Route } from 'react-router-dom';
 import TaskTable from './components/TaskTable/TaskTable';
+import LoginPage from './components/LoginPage/LoginPage';
+import RegisterPage from './components/RegisterPage/RegisterPage';
 
 function App() {
   return (
@@ -15,8 +17,8 @@ function App() {
           <Routes>
             <Route path='/'element={<GroupTable/>}/>
               <Route path="/:id" element={<TaskTable/>}/>
-            <Route path='/login'element={<div>Login Page</div>}/>
-            <Route path='/Registration'element={<div>Registration Page</div>}/>
+            <Route path='/login'element={<LoginPage/>}/>
+            <Route path='/registration'element={<RegisterPage/>}/>
           </Routes>
         <Contacts/>
       </div>

@@ -17,7 +17,7 @@ const Contacts: React.FC = () => {
             </a>
           </li>
           <li className={styles.link}>
-            <a className='link-linkedinn'href="https://www.linkedin.com/in/oxeoh/">
+            <a className='link-linkedin'href="https://www.linkedin.com/in/oxeoh/">
               <img src={linkedInLogo} alt="LinkedIn" />
             </a>
           </li>

@@ -26,7 +26,6 @@ class UserService{
 
     public async checkIsNewUser(login: string){
         const candidate = await this.userRepository.find({where: {login}})
-        console.log(candidate, candidate.length);
         
         if(candidate.length === 0){
             return true
