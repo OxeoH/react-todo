@@ -22,11 +22,17 @@
 }
 
 .link{
+    transition: 0.4s ease 0s;
     margin-right: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     &:last-child{
         margin-right: 0;
+    }
+
+    &:hover{
+        transition: 0.8s ease 0s;
+        transform: rotate(-360deg);
     }
 }
