@@ -10,7 +10,7 @@ import bodyParser from 'body-parser';
 const app = express()
 
 app.use(bodyParser.json())
-app.use("/user", userRouter)
+app.use("/api/user", userRouter)
 
 app.use(express.json())
 app.use(cors())
