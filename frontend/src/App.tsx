@@ -3,15 +3,20 @@ import Contacts from './components/Contacts/Contacts';
 import Header from './components/Header/Header';
 import { Routes, Route } from 'react-router-dom';
 import { authRoutes, defaultRoutes } from './routes';
+import { useContext } from 'react';
+import { appContext } from '.';
 
 function App() {
-  const isAuth = true//!
+
+  const {user} = useContext(appContext)
+  console.log(user);
+  
   return (
     <div className='main'>
       <div className="container">
         <Header/>
           <Routes>
-              {isAuth && authRoutes.map(({path, Component}) => 
+              {user.isAuth && authRoutes.map(({path, Component}) => 
                 <Route key={`${Component}`} path={path} element={<Component/>}/>
               )}
               {
