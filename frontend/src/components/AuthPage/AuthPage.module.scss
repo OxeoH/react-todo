@@ -50,3 +50,7 @@
 .register{
     @include link();
 }
+
+.wrapper{
+    @include block();
+}

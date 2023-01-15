@@ -1,9 +1,10 @@
-import AuthBlock from "../components/AuthBlock/AuthBlock";
+import AuthPage from "../components/AuthPage/AuthPage";
 import LoginPage from "../components/LoginPage/LoginPage";
 import RegisterPage from "../components/RegisterPage/RegisterPage";
 import GroupTable from '../components/GroupTable/GroupTable';
 import { GROUPS_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, REGISTER_ROUTE } from "./utils/consts";
 import TaskTable from "../components/TaskTable/TaskTable";
+
 
 export const authRoutes: RouteType[]= [
     {
@@ -27,7 +28,7 @@ export const defaultRoutes: RouteType[] = [
     },
     {
         path: MAIN_ROUTE,
-        Component: AuthBlock//!Fix
+        Component: AuthPage
     },
 ]
 
