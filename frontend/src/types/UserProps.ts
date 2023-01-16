@@ -1,4 +1,4 @@
 export type LoginProps={
-    nickname: string,
+    login: string,
     password: string
 }

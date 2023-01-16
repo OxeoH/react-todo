@@ -1,6 +1,6 @@
 import { Axios, AxiosInstance } from "axios"
 import { GroupType } from "../store/groups/groups.types"
-import { baseInstance } from "./http"
+import { $host, $authHost } from "./http"
 
 class GroupService{
     baseInstance: AxiosInstance
@@ -15,4 +15,4 @@ class GroupService{
     }
 }
 
-export default new GroupService(baseInstance)
+export default new GroupService($host)
