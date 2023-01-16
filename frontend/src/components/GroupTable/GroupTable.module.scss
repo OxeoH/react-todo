@@ -1,0 +1,18 @@
+@import '../../styles/variables';
+
+.table{
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    justify-items: center;
+    gap: 40px;
+    padding: 40px 30px 20px 30px;
+}
+
+.container{
+    @include block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 60px;
+}
