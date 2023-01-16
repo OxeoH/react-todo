@@ -6,6 +6,7 @@
 }
 
 .search{
+    @include shadowAnimation();
     width: 120%;
     padding: 20px 40px 20px 20px;
     border-radius: 2rem;

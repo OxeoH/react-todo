@@ -52,6 +52,14 @@ $buttonMintOceanShadow: rgb(47, 59, 58);
     }
 }
 
+@mixin shadowAnimation{
+    transition: 0.4s ease 0s;
+    &:hover{
+        transition: 0.4s ease 0s;
+        box-shadow: none;
+    }  
+}
+
 @mixin grayComponent{
     display: flex;
     flex-direction: column;

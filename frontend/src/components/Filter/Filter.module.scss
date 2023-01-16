@@ -1,6 +1,7 @@
 @import '../../styles/variables';
 
 .wrapper{
+    @include shadowAnimation();
     padding: 14px;
     background-color: $specialGrey;
     border-radius: 2rem;
