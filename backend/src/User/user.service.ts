@@ -5,6 +5,7 @@ import { AuthProps } from "./user.types";
 import bcrypt from 'bcryptjs';
 import jwt from "jsonwebtoken"
 import config from './jwtConfig'
+import { Group } from "../Groups/groups.entity";
 
 
 const generateAccessToken = (id: string, login: string) => {
@@ -40,16 +41,18 @@ class UserService{
         return null
     }
 
-    public async createNewUser(registerParams: AuthProps): Promise<User | null>{
+    public async createNewUser(registerParams: AuthProps): Promise<string | null>{
         
         if(await this.checkIsNewUser(registerParams.login)){
-            const newUser = new User
+            const newUser = this.userRepository.create()
             newUser.login = registerParams.login
             newUser.password = registerParams.password
 
             const createdUser = await this.userRepository.save(newUser)
 
-            return createdUser
+            const token = generateAccessToken(createdUser.id, createdUser.login)
+
+            return token
         }else{
             return null
         }
@@ -58,7 +61,9 @@ class UserService{
 
     public async authorizeUser(authParams: AuthProps){
         try{
-            const user = await this.userRepository.findOne({where: {login: authParams.login}})
+            const user = await this.userRepository.findOne({where: {login: authParams.login}, relations: ['groups']})
+            console.log(user);
+            
 
             if(!user){
                 return null
@@ -72,7 +77,7 @@ class UserService{
 
             const token = generateAccessToken(user.id, user.login)
 
-            return token
+            return {token, groups: user.groups}
         }catch(e){
             return null
         }

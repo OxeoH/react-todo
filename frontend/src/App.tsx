@@ -3,20 +3,23 @@ import Contacts from './components/Contacts/Contacts';
 import Header from './components/Header/Header';
 import { Routes, Route } from 'react-router-dom';
 import { authRoutes, defaultRoutes } from './routes';
-import { useContext } from 'react';
-import { appContext } from '.';
+import { useStore } from './store';
+import { observer } from 'mobx-react-lite';
 
 function App() {
 
-  const {user} = useContext(appContext)
-  console.log(user);
+  
+  const {userStore} = useStore()
+  console.log(userStore);
+  
+  
   
   return (
     <div className='main'>
       <div className="container">
         <Header/>
           <Routes>
-              {user.isAuth && authRoutes.map(({path, Component}) => 
+              {userStore.isAuth && authRoutes.map(({path, Component}) => 
                 <Route key={`${Component}`} path={path} element={<Component/>}/>
               )}
               {
@@ -31,4 +34,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);

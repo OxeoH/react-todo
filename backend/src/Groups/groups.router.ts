@@ -13,6 +13,6 @@ groupsRouter.post('/delete/:id', async (req: Request, res: Response) => {
 
 groupsRouter.post('/clear/:id', async (req: Request, res: Response) => {
     await groupsController.clearGroup(req, res);
-}) 
+})
 
 export default groupsRouter

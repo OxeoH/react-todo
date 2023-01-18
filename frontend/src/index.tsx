@@ -5,7 +5,9 @@ import App from './App';
 import {BrowserRouter}from 'react-router-dom'
 import UserStore from './store/user/user.store';
 
-export const appContext = createContext<any>({})//How to type?
+
+
+export const appContext = createContext({user: UserStore})//How to type?
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

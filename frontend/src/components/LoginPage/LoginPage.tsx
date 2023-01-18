@@ -1,22 +1,41 @@
-import React, { FormEvent } from 'react'
-import { authorization, registration } from '../../services/http/userAPI'
+import { observer } from 'mobx-react-lite'
+import React, { FormEvent} from 'react'
+import { authorization} from '../../services/http/userAPI'
 import { LoginProps } from '../../types/UserProps'
 import styles from './LoginPage.module.scss'
+import { useNavigate } from 'react-router'
+import { GROUPS_ROUTE} from '../../routes/utils/consts'
+import { useStore } from '../../store'
+import GroupsStore from '../../store/groups/groups.store'
 
-const LoginPage: React.FC = () => {
+
+const LoginPage: React.FC = observer(() => {
+    const navigate = useNavigate()
+
     const initialForm: LoginProps = {
         login: '',
         password: ''
     }
 
+    const {userStore, groupStore} = useStore()
+
     const [form, setForm] = React.useState<LoginProps>(initialForm)
 
     const sendForm = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
+        const userData = await authorization(form)
+        console.log(userData);
+        
 
-
-        const responce = await authorization(form)
-        console.log(responce);  
+        userStore.setIsAuth(true)
+        userStore.setUser(userData.user)
+        groupStore.setGroups(userData.groups)
+        console.log('Сторы: ');
+        
+        console.log(userStore, groupStore);
+        
+        
+        navigate(GROUPS_ROUTE)
     }
 
   return (
@@ -35,6 +54,6 @@ const LoginPage: React.FC = () => {
         </form>
     </div>
   )
-}
+})
 
 export default LoginPage

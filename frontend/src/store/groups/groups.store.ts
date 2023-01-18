@@ -1,13 +1,17 @@
 import { makeAutoObservable, runInAction } from "mobx";
+import { RootStore } from "..";
 import groupsService from "../../services/groups.service";
 import { GroupType } from "./groups.types";
 
 
-class Groups{
+class GroupsStore{
     
-    groups: GroupType[] = []
+    groups: GroupType[]
+    rootStore: RootStore
 
-    constructor(){
+    constructor(rootStore: RootStore){
+        this.rootStore = rootStore
+        this.groups = []
         makeAutoObservable(this)
     }
 
@@ -19,16 +23,20 @@ class Groups{
         }
     }
 
-    findTodosByGroupIndex(id: string){
-        const groupIndex = this.findGroupIndex(id)
-        
-        if(typeof(groupIndex) !== "undefined" && groupIndex >= 0){  
-            const groupTodos = this.groups[groupIndex].items
-            
-            return groupTodos
-        }
+    setGroups(groups: GroupType[]){
+        this.groups = groups
+    }
 
-        return []
+    clearGroup(){
+
+    }
+
+    createGroup(){
+
+    }
+
+    deleteGroup(){
+
     }
 
     removeAll(){
@@ -44,8 +52,20 @@ class Groups{
         return index
     }
 
+    findTodosByGroupIndex(id: string){
+        const groupIndex = this.findGroupIndex(id)
+        
+        if(typeof(groupIndex) !== "undefined" && groupIndex >= 0){  
+            const groupTodos = this.groups[groupIndex].todos
+            
+            return groupTodos
+        }
+
+        return []
+    }
+
     findTodoIndex(id: number, groupIndex: number){
-        const index = this.groups[groupIndex].items.findIndex(task => task.id === id)
+        const index = this.groups[groupIndex].todos.findIndex(task => task.id === id)
         if(index < 0) {
             console.log("Error: cannot find task by index ", id);
             return
@@ -57,7 +77,7 @@ class Groups{
     removeAllByGroup(id: string){
         const groupIndex = this.findGroupIndex(id)
         if(typeof(groupIndex) !== 'undefined' && groupIndex >= 0){
-            this.groups[groupIndex].items = []
+            this.groups[groupIndex].todos = []
             return
         }
         console.log("Error: cannot find group by index ", id);
@@ -67,8 +87,8 @@ class Groups{
         const groupIndex = this.findGroupIndex(`${groupId}`)
 
         if(typeof(groupIndex) !== 'undefined' && groupIndex >= 0){
-            const taskItem = this.groups[groupIndex].items.find(item => item.id === taskId)
-            this.groups[groupIndex].items = this.groups[groupIndex].items.filter((task) => task !== taskItem)
+            const taskItem = this.groups[groupIndex].todos.find(item => item.id === taskId)
+            this.groups[groupIndex].todos = this.groups[groupIndex].todos.filter((task) => task !== taskItem)
             return
         }
         console.log("Error: cannot find group by index ", groupId)
@@ -80,7 +100,7 @@ class Groups{
         if(typeof(groupIndex) !== 'undefined' && groupIndex >= 0){
             const taskIndex = this.findTodoIndex(taskId, groupIndex)
             if((typeof(taskIndex) !== 'undefined' && taskIndex >= 0)){
-                const task = this.groups[groupIndex].items[taskIndex]
+                const task = this.groups[groupIndex].todos[taskIndex]
                 task.completed = !task.completed
                 return
             }
@@ -91,6 +111,6 @@ class Groups{
     }
 }
 
-export default new Groups()
+export default GroupsStore
 
 

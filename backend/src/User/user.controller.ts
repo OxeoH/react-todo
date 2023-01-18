@@ -19,13 +19,13 @@ class UserController{
                 res.status(400).json({message: "Error: Login and password are requared"})
             }
 
-            const authorizedUserToken = await userService.authorizeUser({login, password})
+            const authorizedUserData = await userService.authorizeUser({login, password})
 
-            if(!authorizedUserToken){
+            if(!authorizedUserData?.token.length){
                 return res.status(400).json({message: "Error: Cannot authorize"})
             }
 
-            res.status(200).json({accessToken: authorizedUserToken})
+            res.status(200).json(authorizedUserData)
         }catch(e){
             res.status(500).json({message: `Error: ${e}`})
         }
@@ -41,10 +41,10 @@ class UserController{
 
             const hashPassword = bcrypt.hashSync(registerParams.password, this.hashSalt)
 
-            const newUser = await userService.createNewUser({...registerParams, password: hashPassword})
+            const token = await userService.createNewUser({...registerParams, password: hashPassword})
 
-            if(newUser){
-                return res.status(200).json({message: `User with login ${newUser.login} and password ${newUser.password} was created with id ${newUser.id}`})
+            if(token){
+                return res.status(200).json({token})
             }else{
                 return res.status(400).json({message: `User with login ${registerParams.login} is already exists`})
             }

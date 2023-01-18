@@ -15,8 +15,8 @@ const RegisterPage: React.FC = () => {
         event.preventDefault()
 
 
-        const responce = await registration(form)
-        console.log(responce);  
+        const response = await registration(form)
+        console.log(response);  
     }
 
   return (

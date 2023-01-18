@@ -1,9 +1,9 @@
 import { makeAutoObservable } from "mobx";
 import { GroupType } from "../groups/groups.types";
-import { Todo } from "./todos.types";
+import { TodoType } from "./todos.types";
 
-class Todos{
-    todo: Todo[] = []
+class TodosStore{
+    todo: TodoType[] = []
 
     constructor(){
         makeAutoObservable(this)
@@ -19,11 +19,11 @@ class Todos{
         this.todo = []
     }
 
-    addTodo(todo: Todo){
+    addTodo(todo: TodoType){
         this.todo.push(todo)
     }
 
     
 
 }
-export default new Todos()
+export default new TodosStore()
