@@ -8,7 +8,7 @@ import styles from './Header.module.scss'
 const Header: React.FC = () => {
   return (
     <div className={styles.header}>
-      <Link to="/">
+      <Link to="/" className={styles.logoLink}>
         <div className={styles.logo}>
           <img className={styles.img} src={logoSrc} alt="OneMoreDealLogo" />
         </div>

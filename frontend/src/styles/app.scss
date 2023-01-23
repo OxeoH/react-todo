@@ -2,20 +2,26 @@
 @import './libs/normalize';
 
 body{
-    max-width: 1080px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: 1080px;
     color: $textWhite;
-    background-color: $mintOcean;
-    padding: 20px;
+    background: $mintOcean;
+    padding: 0 30px;
+    height: 100%;
+}
+html, body{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .main{
-    align-items: center;
-    justify-content: center;
-    background-color: $specialGrey;
+    background: $specialGrey;
     box-shadow: 10px 6px 6px $mintOceanShadow;
-    padding: 50px 10px;
-    margin: 0 auto;
+    padding: 20px 30px;
     border-radius: 40px;
 }

@@ -3,7 +3,7 @@
 .wrapper{
     @include shadowAnimation();
     padding: 14px;
-    background-color: $specialGrey;
+    background: $specialGrey;
     border-radius: 2rem;
     position: relative;
     box-shadow: 2px 4px 4px $mintOceanShadow;
@@ -15,10 +15,10 @@
     padding: 6px;
     border-radius: 1rem;
     font-weight: 500;
-    background-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
     &:hover{
         transition: 0.2s ease-in 0s;
-        background-color: rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.4);
     }
     
 }
@@ -29,7 +29,7 @@
     position: absolute;
     width: 8rem;
     border-radius: 1rem;
-    background-color: white;
+    background: white;
     box-shadow: 4px 4px 4px $specialGreyShadow;
 }
 
@@ -52,7 +52,7 @@
     }
     &:hover{
         transition: 0.2s ease-in 0s;
-        background-color: $mintOcean;
+        background: $mintOcean;
     }
     cursor: pointer;
 }

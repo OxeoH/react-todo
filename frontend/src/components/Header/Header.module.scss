@@ -6,19 +6,28 @@
 .header{
     @include block;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
 }
-
+.logoLink{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .logo{
     user-select: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .img{
-    width: 100%;
-    object-fit: cover;
+    border-radius: 12px;
+    width: 60%;
+    object-fit: contain;
 }
 
 .row{
