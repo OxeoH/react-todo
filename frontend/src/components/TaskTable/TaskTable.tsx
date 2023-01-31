@@ -4,7 +4,7 @@ import TaskItem from '../TaskItem/TaskItem'
 import { useParams } from 'react-router-dom'
 import { TodoType } from '../../store/todos/todos.types'
 import { observer } from 'mobx-react-lite'
-import CreatePopup from '../CreatePopup/CreatePopup'
+import CreateTaskPopup from '../CreateTaskPopup/CreateTaskPopup'
 import { useStore } from '../../store'
 
 
@@ -27,7 +27,7 @@ const TaskTable: React.FC = observer(() => {
     
   return (
     <>
-      {popupVisibility && <CreatePopup/>}
+      {popupVisibility && <CreateTaskPopup/>}
       <div className={styles.table}>
           <div className={styles.tools}>
             <button onClick={() => groupStore.removeAllByGroup(id ? id : '')}>Clear All Tasks</button>

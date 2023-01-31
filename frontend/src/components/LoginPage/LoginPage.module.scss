@@ -24,9 +24,7 @@
 .submit{
     @include mintButton();
     margin-top: 30px;
-    font-weight: 700;
     font-size: 18px;
-    border: none;
 }
 
 .fieldWrap{
@@ -38,17 +36,9 @@
 }
 
 .field{
-    width: 20rem;
-    box-shadow: 2px 4px 4px $specialGreyShadow;
-    padding: 12px 30px 12px 10px;
-    border-radius: 1rem;
-    border: none;   
+    @include input();
 }
 
 .label{
-    margin-bottom: 5px;
-    width: 100%;
-    font-weight: 600;
-    color: white;
-    text-align: left;
+    @include label();
 }

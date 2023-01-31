@@ -1,6 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { RootStore } from "..";
-import groupsService from "../../services/groups.service";
 import { GroupType } from "./groups.types";
 
 
@@ -15,12 +14,16 @@ class GroupsStore{
         makeAutoObservable(this)
     }
 
-     *getGroups(){
-        try{
-            this.groups = yield groupsService.getGroups()
-        }catch(error){
-            console.log(error);
-        }
+    //  *getGroups(){
+    //     try{
+    //         this.groups = yield groupsService.getGroups()
+    //     }catch(error){
+    //         console.log(error);
+    //     }
+    // }
+
+    getGroups(){
+        return this.groups
     }
 
     setGroups(groups: GroupType[]){
@@ -31,8 +34,8 @@ class GroupsStore{
 
     }
 
-    createGroup(){
-
+    addGroup(group: GroupType){
+        this.groups.push(group)
     }
 
     deleteGroup(){

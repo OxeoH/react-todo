@@ -34,11 +34,15 @@ class UserService{
         return false
     }
 
-    public async getUserByLogin(login: string){
+    public async getUserById(userId: string){
+        const candidate = await this.userRepository.findOne({where: {id: userId}})
+        console.log(candidate);
         
-        
-        
-        return null
+        if(candidate){
+            return candidate
+        }
+
+        return candidate
     }
 
     public async createNewUser(registerParams: AuthProps): Promise<string | null>{
@@ -61,7 +65,7 @@ class UserService{
 
     public async authorizeUser(authParams: AuthProps){
         try{
-            const user = await this.userRepository.findOne({where: {login: authParams.login}, relations: ['groups']})
+            const user = await this.userRepository.findOne({where: {login: authParams.login}, relations: ['groups', 'groups.todos']})
             console.log(user);
             
 

@@ -19,6 +19,7 @@ $buttonMintOceanShadow: rgb(47, 59, 58);
     margin: 10px auto;
 }
 @mixin button{
+    font-weight: 700;
     transition: 0.3s ease 0s;
     text-align: center;
     max-width: 200px;
@@ -26,6 +27,8 @@ $buttonMintOceanShadow: rgb(47, 59, 58);
     padding: 14px 30px;
     border-radius: 2rem;
     position: relative;
+    border: none;
+    user-select: none;
 }
 
 @mixin greyButton{
@@ -42,7 +45,7 @@ $buttonMintOceanShadow: rgb(47, 59, 58);
 
 @mixin mintButton{
     @include button();
-    color: $textGray;
+    color: white;
     background: $mintOcean;
     box-shadow: 2px 4px 4px $specialGreyShadow;
     &:active{
@@ -69,4 +72,39 @@ $buttonMintOceanShadow: rgb(47, 59, 58);
     padding: 30px;
     border-radius: 16px;
     margin: 10px auto;
+}
+
+@mixin popUp{
+    @include grayComponent();
+    position: absolute;
+    max-width: 400px;
+    z-index: 1000;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 30px;
+}
+
+@mixin form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin input{
+    width: 20rem;
+    box-shadow: 2px 4px 4px $specialGreyShadow;
+    padding: 12px 30px 12px 10px;
+    border-radius: 1rem;
+    border: none;  
+}
+
+@mixin label{
+    margin-bottom: 5px;
+    width: 100%;
+    font-weight: 700;
+    color: white;
+    text-align: left;
 }

@@ -11,15 +11,14 @@ class GroupService{
     }
 
     public async createNewGroup(createParams: GroupProps): Promise<Group | null>{
-        
         if(createParams){
             const newGroup = new Group
             newGroup.name = createParams.groupName
-            newGroup.description = createParams.description
             newGroup.user = createParams.user
+            newGroup.todos = []
 
             const createdGroup = await this.groupRepository.save(newGroup)
-
+            
             return createdGroup
         }else{
             return null

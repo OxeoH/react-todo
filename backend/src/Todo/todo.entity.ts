@@ -12,6 +12,6 @@ export class Todo {
     @Column()
     completed: boolean
 
-    @ManyToOne(() => Group, (group) => group.items)
+    @ManyToOne(() => Group, (group) => group.todos)
     group: Group
 }

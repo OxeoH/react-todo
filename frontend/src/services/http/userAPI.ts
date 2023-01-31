@@ -1,7 +1,7 @@
 import { LoginProps } from "../../types/UserProps";
 import { $host } from "./index";
 import jwt_decode from 'jwt-decode'
-import { AuthResponse, AuthResult, RegisterResponse} from "./apiTypes";
+import { AuthResponse, AuthResult, RegisterResponse} from "./user.api.types";
 import { User } from "../../store/user/user.types";
 
 export const registration = async ({login, password}: LoginProps) => {
@@ -11,9 +11,9 @@ export const registration = async ({login, password}: LoginProps) => {
     
     return jwt_decode<User>(data.token)
 }
+
 export const authorization = async ({login, password}: LoginProps) => {
     const {data} = await $host.post<AuthResponse>("api/user/login", {login, password})
-    console.log("Data: ", data);
     
     localStorage.setItem('token', `${data.token}`)
 

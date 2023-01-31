@@ -24,16 +24,10 @@ const LoginPage: React.FC = observer(() => {
     const sendForm = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         const userData = await authorization(form)
-        console.log(userData);
-        
 
         userStore.setIsAuth(true)
         userStore.setUser(userData.user)
         groupStore.setGroups(userData.groups)
-        console.log('Сторы: ');
-        
-        console.log(userStore, groupStore);
-        
         
         navigate(GROUPS_ROUTE)
     }

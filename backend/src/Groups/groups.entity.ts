@@ -4,17 +4,14 @@ import { User } from "../User/user.entity"
 
 @Entity()
 export class Group {
-    @PrimaryGeneratedColumn()
-    id: number
+    @PrimaryGeneratedColumn('uuid')
+    id: string
 
     @Column()
     name: string
 
-    @Column()
-    description: string
-
     @OneToMany(() => Todo, (todo) => todo.group)
-    items: Todo[]
+    todos: Todo[]
 
     @ManyToOne(() => User, (user) => user.groups)
     user: User
