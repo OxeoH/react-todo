@@ -29,6 +29,7 @@ $buttonMintOceanShadow: rgb(47, 59, 58);
     position: relative;
     border: none;
     user-select: none;
+    cursor: pointer;
 }
 
 @mixin greyButton{

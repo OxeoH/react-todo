@@ -3,18 +3,19 @@
 
 
 .wrapper{
-    width: 240px;
-    height: 240px;  
-    border-radius: 12%;
+    position: relative;
+    @include grayComponent();
+    @include shadowAnimation();
     justify-content: left;
     align-items: flex-start;
+    width: 240px;
+    height: 240px;
+    margin: 0;
     padding: 20px;
-    background-color: $specialGrey;
-    box-shadow: 10px 6px 6px $mintOceanShadow;
     &:hover{
         transition: 0.8s ease 0s;
         box-shadow: none;
-        background-color: $specialGreyShadow;
+        background: $specialGreyShadow;
     }
 }
 .name{
@@ -27,6 +28,20 @@
     font-size: 14px;
     color: rgba(255, 255, 255, 0.5);
     span{
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(255, 255, 255, 0.7);
     }
+}
+.cross{
+    @include shadowAnimation();
+    &:hover{
+        background: $mintOcean;
+    }
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    background: $specialGrey;
+    color: white;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 50%;
 }

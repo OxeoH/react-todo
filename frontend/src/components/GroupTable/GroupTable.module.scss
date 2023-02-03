@@ -2,7 +2,7 @@
 
 .table{
     display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    grid-template: repeat(2, 1fr) / repeat(3, 1fr);
     justify-items: center;
     gap: 40px;
     padding: 40px 30px 20px 30px;
@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px 60px;
+    padding: 10px 60px;
 }
 
 .tools{
@@ -23,8 +23,8 @@
     flex-direction: row;
     justify-content: right;
     align-items: center;
-    margin-bottom: 20px;
-    padding: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
 }
 
 .create{

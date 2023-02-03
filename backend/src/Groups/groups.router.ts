@@ -7,11 +7,11 @@ groupsRouter.post('/create', async (req: Request, res: Response) => {
     await groupsController.createGroup(req, res)
 })
 
-groupsRouter.post('/delete/:id', async (req: Request, res: Response) => {
+groupsRouter.post('/delete', async (req: Request, res: Response) => {
     await groupsController.deleteGroup(req, res);
 })
 
-groupsRouter.post('/clear/:id', async (req: Request, res: Response) => {
+groupsRouter.post('/clear', async (req: Request, res: Response) => {
     await groupsController.clearGroup(req, res);
 })
 

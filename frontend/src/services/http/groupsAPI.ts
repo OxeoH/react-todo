@@ -12,14 +12,18 @@ export const createGroup = async (groupName: string) => {
 }
 export const deleteGroup = async (groupId: string) => {
     const token = localStorage.getItem('token') || ''
-    const {data} = await $authHost.post<GroupType>(`api/groups/delete/${groupId}`, {token})
-    console.log("Deleted data: ", data);
-    console.log("Deleted id", data.id);
+    const response = await $authHost.post<{id: string}>(`api/groups/delete`, {token, groupId})
+    
+    if(response.status === 200){
+        return response.data.id
+    }
+    
+    return ''
 }
 
 export const clearGroup = async (groupId: string) =>{
     const token = localStorage.getItem('token') || ''
-    const response = await $authHost.post(`api/groups/clear/${groupId}`, {token})
+    const response = await $authHost.post(`api/groups/clear`, {token, groupId})
     console.log(response.status);
 }
 

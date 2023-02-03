@@ -38,8 +38,10 @@ class GroupsStore{
         this.groups.push(group)
     }
 
-    deleteGroup(){
-
+    deleteGroup(id: string){
+        const index = this.findGroupIndex(id)
+        if(index < 0) alert("Error: Cannot find this group")
+        this.groups = this.groups.filter((group) => group.id !== this.groups[index].id)
     }
 
     removeAll(){
@@ -47,10 +49,10 @@ class GroupsStore{
     }
 
     findGroupIndex(id: string){
-        const index = this.groups.findIndex(group => `${group.id}` === id)
+        const index = this.groups.findIndex(group => group.id === id)
         if(index < 0) {
-            console.log("Error: cannot find group by index ", id);
-            return
+            console.log("Error: cannot find group with that index: ", id);
+            return -1
         }
         return index
     }

@@ -9,11 +9,8 @@ export const verifyTokenMiddleware = (token: string) => {
         if(!token) return null
 
         const verifiedTokenData = jwt.verify(token, config.secret)
-        console.log(verifiedTokenData);
         
         if(typeof(verifiedTokenData) === 'string') return null
-        console.log("JWT_DECODE: ", jwt_decode(token));
-        
         
         return jwt_decode<userProps>(token)
     }catch(e){
