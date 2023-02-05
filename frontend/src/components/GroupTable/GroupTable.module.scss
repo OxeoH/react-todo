@@ -2,9 +2,9 @@
 
 .table{
     display: grid;
-    grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+    grid-template: 1fr / repeat(3, 1fr);
     justify-items: center;
-    gap: 40px;
+    gap: 30px;
     padding: 40px 30px 20px 30px;
 }
 

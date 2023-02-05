@@ -1,29 +1,35 @@
 import { makeAutoObservable } from "mobx";
-import { GroupType } from "../groups/groups.types";
+import { RootStore } from "..";
 import { TodoType } from "./todos.types";
 
 class TodosStore{
-    todo: TodoType[] = []
+    todos: TodoType[] = []
+    rootStore: RootStore
 
-    constructor(){
+    constructor(rootStore: RootStore){
+        this.rootStore = rootStore
+        this.todos = []
         makeAutoObservable(this)
     }
 
-    removeTodo(id: number){
+    setTodos(todos: TodoType[]){
+        this.todos = todos
+    }
+
+    removeTodo(id: string){
         console.log(id);
         
-        this.todo = this.todo.filter((item) => item.id !== id)
+        this.todos = this.todos.filter((item) => item.id !== id)
     }
 
     removeAll(){
-        this.todo = []
+        this.todos = []
     }
 
-    addTodo(todo: TodoType){
-        this.todo.push(todo)
+    addTodo(Todos: TodoType){
+        this.todos.push(Todos)
     }
-
-    
 
 }
-export default new TodosStore()
+
+export default TodosStore

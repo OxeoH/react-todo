@@ -6,7 +6,6 @@ import styles from './LoginPage.module.scss'
 import { useNavigate } from 'react-router'
 import { GROUPS_ROUTE} from '../../routes/utils/consts'
 import { useStore } from '../../store'
-import GroupsStore from '../../store/groups/groups.store'
 
 
 const LoginPage: React.FC = observer(() => {
@@ -17,7 +16,7 @@ const LoginPage: React.FC = observer(() => {
         password: ''
     }
 
-    const {userStore, groupStore} = useStore()
+    const {userStore, groupStore, todosStore} = useStore()
 
     const [form, setForm] = React.useState<LoginProps>(initialForm)
 
@@ -28,6 +27,7 @@ const LoginPage: React.FC = observer(() => {
         userStore.setIsAuth(true)
         userStore.setUser(userData.user)
         groupStore.setGroups(userData.groups)
+        todosStore.setTodos(userData.todos)
         
         navigate(GROUPS_ROUTE)
     }

@@ -1,7 +1,7 @@
 export type TodoType ={
-    id: number,
+    id: string,
     title: string,
     completed: boolean,
-    group: number
+    group: string
 }
 

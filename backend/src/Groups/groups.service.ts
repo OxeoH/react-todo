@@ -41,7 +41,19 @@ class GroupService{
         }else{
             return null
         }
-        
+    }
+
+
+    public async getGroupById(groupId: string){
+        if(groupId.length){
+            
+            const candidate = await this.groupRepository.findOne({where: {id: groupId}})
+
+            if(candidate){
+                return candidate
+            }
+        }
+        return null
     }
 }
 

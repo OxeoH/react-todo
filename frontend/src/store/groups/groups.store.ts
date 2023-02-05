@@ -69,7 +69,7 @@ class GroupsStore{
         return []
     }
 
-    findTodoIndex(id: number, groupIndex: number){
+    findTodoIndex(id: string, groupIndex: number){
         const index = this.groups[groupIndex].todos.findIndex(task => task.id === id)
         if(index < 0) {
             console.log("Error: cannot find task by index ", id);
@@ -88,7 +88,7 @@ class GroupsStore{
         console.log("Error: cannot find group by index ", id);
     }
 
-    removeTodo(taskId: number, groupId: number){    
+    removeTodo(taskId: string, groupId: string){    
         const groupIndex = this.findGroupIndex(`${groupId}`)
 
         if(typeof(groupIndex) !== 'undefined' && groupIndex >= 0){
@@ -99,7 +99,7 @@ class GroupsStore{
         console.log("Error: cannot find group by index ", groupId)
     }   
 
-    changeTodoStatus(taskId: number, groupId: number){
+    changeTodoStatus(taskId: string, groupId: string){
         const groupIndex = this.findGroupIndex(`${groupId}`)
         
         if(typeof(groupIndex) !== 'undefined' && groupIndex >= 0){

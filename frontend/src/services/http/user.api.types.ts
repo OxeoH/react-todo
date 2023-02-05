@@ -1,4 +1,5 @@
 import { GroupType } from "../../store/groups/groups.types"
+import { TodoType } from "../../store/todos/todos.types"
 import { User } from "../../store/user/user.types"
 
 export type AuthResponse={
@@ -12,5 +13,6 @@ export type RegisterResponse={
 
 export type AuthResult={
     user: User,
-    groups: GroupType[]
+    groups: GroupType[],
+    todos: TodoType[]
 }

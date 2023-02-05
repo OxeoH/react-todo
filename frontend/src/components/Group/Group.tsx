@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { GROUPS_ROUTE } from '../../routes/utils/consts';
 import { deleteGroup } from '../../services/http/groupsAPI';
 import { useStore } from '../../store';
 import { GroupType } from '../../store/groups/groups.types';
@@ -15,7 +16,6 @@ const Group: React.FC<GroupType> = observer((group) => {
 
       try{
         const deletedId = await deleteGroup(id)
-        console.log("Group deleted id: ", deletedId);
         
         if(deletedId.length){
           groupStore.deleteGroup(deletedId)
@@ -30,7 +30,7 @@ const Group: React.FC<GroupType> = observer((group) => {
 
 
   return (
-    <Link to={`/${id}`}>
+    <Link to={GROUPS_ROUTE + `/${id}`}>
         <div className={styles.wrapper}>
             <div className={styles.cross} onClick={(e) => removeGroup(e)}>X</div>
             <div className={styles.name}>{name}</div>
