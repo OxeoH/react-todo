@@ -6,6 +6,8 @@ import bcrypt from 'bcryptjs';
 import jwt from "jsonwebtoken"
 import config from './jwtConfig'
 import { Group } from "../Groups/groups.entity";
+import { fixTodos } from "./util/fixTodos";
+
 
 
 const generateAccessToken = (id: string, login: string) => {
@@ -66,9 +68,7 @@ class UserService{
     public async authorizeUser(authParams: AuthProps){
         try{
             const user = await this.userRepository.findOne({where: {login: authParams.login}, relations: ['groups', 'groups.todos']})
-            console.log(user);
             
-
             if(!user){
                 return null
             }
@@ -80,8 +80,9 @@ class UserService{
             }
 
             const token = generateAccessToken(user.id, user.login)
+            console.log(fixTodos(user.groups))
 
-            return {token, groups: user.groups}
+            return {token, groups: fixTodos(user.groups)}
         }catch(e){
             return null
         }

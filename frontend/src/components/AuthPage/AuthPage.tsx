@@ -1,8 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { GROUPS_ROUTE } from '../../routes/utils/consts'
+import { useStore } from '../../store'
 import styles from './AuthPage.module.scss'
 
 const AuthBlock: React.FC = () => {
+    
+
   return (
     <div className={styles.wrapper}>
         <div className={styles.container}>

@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { RootStore } from "..";
+import { TodoType } from "../todos/todos.types";
 import { GroupType } from "./groups.types";
 
 
@@ -95,8 +96,10 @@ class GroupsStore{
             const taskItem = this.groups[groupIndex].todos.find(item => item.id === taskId)
             this.groups[groupIndex].todos = this.groups[groupIndex].todos.filter((task) => task !== taskItem)
             return
+        }else{
+            console.log("Error: cannot find group by index ", groupId)
         }
-        console.log("Error: cannot find group by index ", groupId)
+        
     }   
 
     changeTodoStatus(taskId: string, groupId: string){
@@ -113,6 +116,21 @@ class GroupsStore{
             return
         } 
         console.log("Error: cannot find group by index ", groupId)
+    }
+
+    addTodoByGroup(todo: TodoType){
+        if(todo){
+
+            const groupIndex = this.findGroupIndex(`${todo.group.id}`)
+
+            if(typeof(groupIndex) !== 'undefined' && groupIndex >= 0){
+                this.groups[groupIndex].todos.push(todo)
+                return
+            }else{
+                console.log("Error: cannot find group by index ", todo.group.id)
+            }
+            
+        }
     }
 }
 

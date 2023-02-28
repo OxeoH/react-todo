@@ -3,7 +3,7 @@ import AppDataSource from "../../data-source";
 import { Group } from "../Groups/groups.entity";
 import { Todo } from "./todo.entity";
 
-class TodosService{
+export class TodosService{
     todosRepository: Repository<Todo>
 
     constructor(){
@@ -19,6 +19,21 @@ class TodosService{
         const createdTodo = await this.todosRepository.save(newTodo)
 
         return createdTodo
+    }
+
+    public async deleteTodoById(todoId: string, group: Group){
+        const candidate = await this.todosRepository.findOne({where: {id: todoId, group}})
+        if(candidate){
+            const deletedTodo = await this.todosRepository.remove(candidate)
+
+            return deletedTodo
+        }else{
+            return null
+        }
+    }
+
+    public async deleteTodosFromGroup(todos: Todo[]){
+        todos.map(todo => this.todosRepository.delete({id: todo.id}))
     }
 }
 

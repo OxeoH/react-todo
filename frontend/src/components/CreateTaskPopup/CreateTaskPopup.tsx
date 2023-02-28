@@ -5,7 +5,7 @@ import { useStore } from '../../store'
 import styles from './CreateTaskPopup.module.scss'
 
 export const CreateTaskPopup: React.FC<any> = observer(({setPopupVisibility, groupId}) => {
-  const {todosStore} = useStore()
+  const {groupStore} = useStore()
   const [todoName, setTodoName] = React.useState('')
 
   const sendForm = async (e: FormEvent<HTMLFormElement>) =>{
@@ -13,7 +13,7 @@ export const CreateTaskPopup: React.FC<any> = observer(({setPopupVisibility, gro
     setPopupVisibility(false)
     const newTask = await createTask(todoName, groupId)
 
-    todosStore.addTodo(newTask);
+    groupStore.addTodoByGroup(newTask);
   }
 
 

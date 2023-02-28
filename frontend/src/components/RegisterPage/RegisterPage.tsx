@@ -1,5 +1,8 @@
 import React, { FormEvent } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { GROUPS_ROUTE } from '../../routes/utils/consts'
 import { registration } from '../../services/http/userAPI'
+import { useStore } from '../../store'
 import { LoginProps } from '../../types/UserProps'
 import styles from './RegisterPage.module.scss'
 
@@ -10,13 +13,21 @@ const RegisterPage: React.FC = () => {
     }
 
     const [form, setForm] = React.useState<LoginProps>(initialForm)
+    const navigate = useNavigate()
+    const {userStore, groupStore, todosStore} = useStore()
 
     const sendForm = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
 
-        const response = await registration(form)
-        console.log(response);  
+        const newUser = await registration(form)
+
+        userStore.setIsAuth(true)
+        userStore.setUser(newUser)
+        todosStore.setTodos([])
+        groupStore.setGroups([])
+        
+        navigate(GROUPS_ROUTE)
     }
 
   return (

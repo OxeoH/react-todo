@@ -9,20 +9,14 @@ export const createTask = async (todoName: string, groupId: string) => {
     
     return data
 }
-// export const deleteGroup = async (groupId: string) => {
-//     const token = localStorage.getItem('token') || ''
-//     const response = await $authHost.post<{id: string}>(`api/todos/delete`, {token, groupId})
-    
-//     if(response.status === 200){
-//         return response.data.id
-//     }
-    
-//     return ''
-// }
 
-// export const clearGroup = async (groupId: string) =>{
-//     const token = localStorage.getItem('token') || ''
-//     const response = await $authHost.post(`api/groups/clear`, {token, groupId})
-//     console.log(response.status);
-// }
-
+export const deleteTask = async (todoId: string, groupId: string) => {
+    const token = localStorage.getItem('token') || ''
+    const response = await $authHost.post<{id: string}>("api/todos/delete", {todoId, groupId, token})
+    if(response.status === 200){
+        console.log("Deleted task: ", response.data);
+        return response.data.id
+    }
+    
+    return ''
+}

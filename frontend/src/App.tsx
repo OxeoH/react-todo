@@ -10,7 +10,6 @@ function App() {
 
   
   const {userStore} = useStore()
-  console.log(userStore);
   
   
   

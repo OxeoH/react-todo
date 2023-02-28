@@ -7,7 +7,7 @@ todosRouter.post('/create', async (req: Request, res: Response) => {
     await todosController.createTodo(req, res)
 })
 
-todosRouter.post('/delete/:id', async (req: Request, res: Response) => {
+todosRouter.post('/delete', async (req: Request, res: Response) => {
     await todosController.deleteTodo(req, res);
 })
 

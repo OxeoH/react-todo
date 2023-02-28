@@ -11,8 +11,5 @@ userRouter.post('/registration', async (req: Request, res: Response) => {
     await userController.registerUser(req, res);
 })
 
-userRouter.get('/auth', async (req: Request, res: Response) => {
-    
-})
 
 export default userRouter

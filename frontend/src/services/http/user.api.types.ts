@@ -8,7 +8,7 @@ export type AuthResponse={
 }
 
 export type RegisterResponse={
-    token: string,
+    token: string
 }
 
 export type AuthResult={

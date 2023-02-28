@@ -5,8 +5,8 @@ export const getTodosFromGroups = (groups: GroupType[]) => {
     let tasks: TodoType[] = []
 
     for(let group of groups){
-        for(let todo of group.todos){
-            tasks.push(todo)
+        for(let todo of group.todos){            
+            tasks.push({...todo, group})
         }
     }
 
