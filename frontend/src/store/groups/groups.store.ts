@@ -65,9 +65,9 @@ class GroupsStore{
             const groupTodos = this.groups[groupIndex].todos
             
             return groupTodos
+        }else{
+            return []
         }
-
-        return []
     }
 
     findTodoIndex(id: string, groupIndex: number){

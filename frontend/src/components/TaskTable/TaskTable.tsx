@@ -14,13 +14,7 @@ const TaskTable: React.FC = observer(() => {
     const params = useParams()
     const {id} = params
     
-    
-    const currentTodos = groupStore.findTodosByGroupIndex(id || '')
-    if(currentTodos.length){
-      currentTodos.map(task => console.log("Group from task: ", task.group))
-    }
-    
-    
+    const currentTodos = id ? groupStore.findTodosByGroupIndex(id) : []
 
     const showTaskCreator = () => {
       setPopupVisibility(!popupVisibility)
@@ -33,7 +27,7 @@ const TaskTable: React.FC = observer(() => {
             <button className={styles.create} onClick={() => showTaskCreator()}>Create Task</button>
           </div>
       <div className={styles.table}>
-        {currentTodos.length && currentTodos.map((task, index) => <TaskItem key={task.id} id={task.id} title={task.title} completed={task.completed} group={task.group} />)}
+      {currentTodos.length && currentTodos.map((task) => <TaskItem key={task.id} id={task.id} title={task.title} completed={task.completed} group={task.group} />)}
       </div>
       
     </div>
