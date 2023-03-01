@@ -1,5 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
+import { Link } from 'react-router-dom';
+import { MAIN_ROUTE } from '../../routes/utils/consts';
 import { useStore } from '../../store';
 import { CreateGroupPopup } from '../CreateGroupPopup/CreateGroupPopup';
 import Group from '../Group/Group';
@@ -20,6 +22,7 @@ const GroupTable: React.FC = observer(() => {
       {popupVisibility && <CreateGroupPopup setPopupVisibility={setPopupVisibility}/>}
 
       <div className={styles.tools}>
+        <Link to={`${MAIN_ROUTE}`}><button className={styles.menu}>Menu</button></Link>
         <button className={styles.create} onClick={() => createGroup()}>Create New Group</button>
       </div>
       <div className={styles.table}>

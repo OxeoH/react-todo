@@ -21,7 +21,7 @@ export const WelcomeBlock: React.FC = () => {
             <ul className={styles.links}>
                 <Link to='/groups' className={styles.link}>
                     <li className={styles.work}>
-                        To work
+                        Work
                     </li>
                 </Link>
                 <button className={styles.link} onClick={() => endSession()}>
