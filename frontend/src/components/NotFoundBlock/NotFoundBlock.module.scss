@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+
+
+.block{
+    @include block();
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px;
+    
+}
+.text{
+    text-align: center;
+    color: $textGray;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 30px
+}  
+
+.link{
+    @include greyButton();
+}

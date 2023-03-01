@@ -28,6 +28,7 @@ const GroupTable: React.FC = observer(() => {
       <div className={styles.table}>
         {groupStore.groups.map((item) => (<Group key={item.id} id={item.id} name={item.name} todos={item.todos}/>))}
       </div>
+      {!groupStore.groups.length ? <div className={styles.empty}>☀️There are no active groups🍸</div> : <></>}
     </div>
   )
 });

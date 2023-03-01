@@ -1,11 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logoSrc from "../../assets/img/logo.png";
+import { MAIN_ROUTE } from '../../routes/utils/consts';
 import Filter from '../Filter/Filter';
 import Search from '../Search/Search';
 import styles from './Header.module.scss' 
 
 const Header: React.FC = () => {
+  const location = useLocation();
+
   return (
     <div className={styles.header}>
       <Link to="/" className={styles.logoLink}>
@@ -14,12 +17,16 @@ const Header: React.FC = () => {
         </div>
       </Link>
       <ul className={styles.row}>
-        <li className={styles.item}>
-          <Search/>
-        </li>
-        <li className={styles.item}>
-          <Filter/>
-        </li>
+        {location.pathname !== `${MAIN_ROUTE}` && 
+          <>
+            <li className={styles.item}>
+              <Search/>
+            </li>
+            <li className={styles.item}>
+              <Filter/>
+            </li>
+          </>
+        }
       </ul>
     </div>
     )}

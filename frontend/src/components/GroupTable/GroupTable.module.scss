@@ -5,7 +5,7 @@
     grid-template: 1fr / repeat(3, 1fr);
     justify-items: center;
     gap: 30px;
-    padding: 40px 30px 20px 30px;
+    padding: 20px 30px 20px 30px;
 }
 
 .container{
@@ -23,7 +23,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
     padding: 10px;
 }
 
@@ -37,4 +36,11 @@
     @include greyButton();
     color: white;
     font-weight: 700;
+}
+
+.empty{
+    font-weight: 700;
+    font-size: 26px;
+    color: $textGray;
+    margin-bottom: 3rem;
 }

@@ -30,7 +30,8 @@ const TaskTable: React.FC = observer(() => {
             <button className={styles.create} onClick={() => showTaskCreator()}>Create Task</button>
           </div>
       <div className={styles.table}>
-      {currentTodos.map((task) => <TaskItem key={task.id} id={task.id} title={task.title} completed={task.completed} group={task.group} />)}
+        {!currentTodos.length ? <div className={styles.empty}>☀️There are no active tasks🍸</div> : <></>}
+        {currentTodos.map((task) => <TaskItem key={task.id} id={task.id} title={task.title} completed={task.completed} group={task.group} />)}
       </div>
       
     </div>

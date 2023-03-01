@@ -50,3 +50,7 @@
 .wrapper{
     @include block();
 }
+.username{
+    font-weight: 900;
+    color: $textGray;
+}

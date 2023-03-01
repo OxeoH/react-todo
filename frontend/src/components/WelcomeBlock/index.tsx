@@ -17,7 +17,7 @@ export const WelcomeBlock: React.FC = () => {
   return (
     <div className={styles.wrapper}>
         <div className={styles.container}>
-            <div className={styles.text}>Welcome, {`${userStore.user.login}`}</div>
+            <div className={styles.text}>Welcome, <span className={styles.username}>{`${userStore.user.login}`}</span></div>
             <ul className={styles.links}>
                 <Link to='/groups' className={styles.link}>
                     <li className={styles.work}>
