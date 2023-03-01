@@ -1,11 +1,12 @@
 @import '../../styles/variables';
 
 .table{
-    display: grid;
-    grid-template: 3fr / 1fr;
-    justify-items: center;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
     padding: 10px 30px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .container{

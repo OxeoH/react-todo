@@ -31,7 +31,7 @@ const TaskTable: React.FC = observer(() => {
           </div>
       <div className={styles.table}>
         {!currentTodos.length ? <div className={styles.empty}>☀️There are no active tasks🍸</div> : <></>}
-        {currentTodos.map((task) => <TaskItem key={task.id} id={task.id} title={task.title} completed={task.completed} group={task.group} />)}
+        {currentTodos.map((task, index) => <TaskItem key={task.id} id={task.id} title={task.title} completed={task.completed} group={task.group} place={index + 1}/>)}
       </div>
       
     </div>

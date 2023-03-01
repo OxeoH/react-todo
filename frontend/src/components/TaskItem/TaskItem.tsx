@@ -6,7 +6,7 @@ import { observer } from 'mobx-react-lite';
 import { useStore } from '../../store';
 import { deleteTask } from '../../services/http/todosAPI';
 
-const TaskItem: React.FC<TodoType> = observer(({id, title, completed, group}) => { 
+const TaskItem: React.FC<TodoType> = observer(({id, title, completed, group, place}) => { 
   const {groupStore} = useStore()
 
   const deleteTodo = async () =>{
@@ -27,7 +27,9 @@ const TaskItem: React.FC<TodoType> = observer(({id, title, completed, group}) =>
 
   return (
     <div className={styles.task}>
-        <div className={styles.counter}>(?)</div>
+        <div className={styles.counter}>
+          <span className={styles.number}>{`${place}`}</span>
+        </div>
         <label className={styles.title}>{title}</label>
         <div className={styles.toolsWrapper}>
           <input type="checkbox" className={styles.checker} defaultChecked={completed} onChange={() => groupStore.changeTodoStatus(id, group.id)}/>
