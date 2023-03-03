@@ -9,7 +9,7 @@ import styles from './Group.module.scss'
 
 const Group: React.FC<GroupType> = observer((group) => {
     const {id, name, todos} = group
-    const {groupStore} = useStore();
+    const {groupStore, sortStore} = useStore();
 
     const removeGroup = async (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       e.preventDefault();
@@ -30,7 +30,7 @@ const Group: React.FC<GroupType> = observer((group) => {
 
 
   return (
-    <Link to={GROUPS_ROUTE + `/${id}`}>
+    <Link to={GROUPS_ROUTE + `/${id}`} onClick={() => sortStore.resetSearch()}>
         <div className={styles.wrapper}>
             <div className={styles.cross} onClick={(e) => removeGroup(e)}>X</div>
             <div className={styles.name}>{name}</div>

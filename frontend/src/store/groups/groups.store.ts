@@ -58,11 +58,14 @@ class GroupsStore{
         return index
     }
 
-    findTodosByGroupIndex(id: string){
+    findTodosByParameters(id: string){
         const groupIndex = this.findGroupIndex(id)
+
+        const searchValue = this.rootStore.sortStore.todoSearch
         
-        if(typeof(groupIndex) !== "undefined" && groupIndex >= 0){  
+        if(typeof(groupIndex) !== "undefined" && groupIndex >= 0){
             const groupTodos = this.groups[groupIndex].todos
+                .filter(todo => todo.title.toLowerCase().includes(searchValue.toLowerCase()))
             
             return groupTodos
         }else{

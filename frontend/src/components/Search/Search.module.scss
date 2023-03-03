@@ -18,8 +18,8 @@
     &::before{
         content: "";
         position: absolute;
-        width: 18px; 
-        height: 6px; 
+        width: 24px; 
+        height: 10px; 
         background: rgb(65, 59, 59);
         transform: rotate(-45deg);
     }
@@ -27,12 +27,12 @@
         transform: rotate(45deg);
         content: "";
         position: absolute; 
-        width: 18px; 
-        height: 6px; 
+        width: 24px; 
+        height: 10px; 
         background: rgb(65, 59, 59);
     }
     cursor: pointer;
     position: absolute; 
-    top: 48%;
-    right: 2px;
+    top: 46%;
+    right: 4%;
 }

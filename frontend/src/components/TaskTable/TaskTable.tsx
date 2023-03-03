@@ -10,12 +10,12 @@ import { GROUPS_ROUTE, MAIN_ROUTE } from '../../routes/utils/consts'
 
 const TaskTable: React.FC = observer(() => {
     const [popupVisibility, setPopupVisibility] = React.useState(false)
-    const {groupStore} = useStore()
+    const {groupStore, sortStore} = useStore()
 
     const params = useParams()
     const {id} = params
     
-    const currentTodos = id ? groupStore.findTodosByGroupIndex(id) : []
+    const currentTodos = id ? groupStore.findTodosByParameters(id) : []
 
     const showTaskCreator = () => {
       setPopupVisibility(!popupVisibility)
@@ -25,7 +25,7 @@ const TaskTable: React.FC = observer(() => {
     <div className={styles.container}>
       {popupVisibility && <CreateTaskPopup groupId={id} setPopupVisibility={setPopupVisibility}/>}
       <div className={styles.tools}>
-            <Link to={`${GROUPS_ROUTE}`}><button className={styles.back}>Back</button></Link>
+            <Link to={`${GROUPS_ROUTE}`}><button className={styles.back} onClick={() => sortStore.resetSearch()}>Back</button></Link>
             <Link to={`${MAIN_ROUTE}`}><button className={styles.back}>Menu</button></Link>
             <button className={styles.create} onClick={() => showTaskCreator()}>Create Task</button>
           </div>
