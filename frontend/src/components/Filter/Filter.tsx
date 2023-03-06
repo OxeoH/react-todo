@@ -1,19 +1,21 @@
 import React from 'react'
 import styles from './Filter.module.scss'
+import { Sort, sorts } from '../../store/sorts/sorts.types';
+import { useStore } from '../../store';
 
 const Filter: React.FC = () => {
   const [popupVisibility, setPopupVisibility] = React.useState(false);
   const sortRef = React.useRef<HTMLDivElement>(null);
+  const {sortStore} = useStore()
   
   
-  const onSortChoose = () =>{
+  const onSortChoose = (sort: Sort) =>{
+    sortStore.setFilter(sort)
     setPopupVisibility(false);
+
   }
 
-  const sorts = [
-    {name: "A - Z / А - Я", sortType: "alphabetAsc"},
-    {name: "Z - A / Я - А", sortType: "alphabetDesc"}
-  ];
+  
   
 
   React.useEffect(() => {
@@ -30,11 +32,11 @@ const Filter: React.FC = () => {
 
   return (
     <div className={styles.wrapper} ref={sortRef}>
-      <div className={styles.text} onClick={() => setPopupVisibility(!popupVisibility)}>Filter by: <span className={styles.value}>A - Z / А - Я</span>
+      <div className={styles.text} onClick={() => setPopupVisibility(!popupVisibility)}>Filter by: <span className={styles.value}>{sortStore.filter.name}</span>
       {popupVisibility && 
         <div className={styles.popup}>
             <ul className={styles.sorts}>
-              {sorts.map((sort, index) => (<li key={index} className={styles.sort} onClick={() => onSortChoose()}>{sort.name}</li>))}
+              {sorts.map((sort, index) => (<li key={index} className={styles.sort} onClick={() => onSortChoose(sort)}>{sort.name}</li>))}
             </ul>
           </div>
         }

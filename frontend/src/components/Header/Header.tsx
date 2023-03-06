@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import logoSrc from "../../assets/img/logo.png";
-import { MAIN_ROUTE } from '../../routes/utils/consts';
+import { MAIN_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from '../../routes/utils/consts';
 import Filter from '../Filter/Filter';
 import Search from '../Search/Search';
 import styles from './Header.module.scss' 
 
 const Header: React.FC = () => {
   const location = useLocation();
+  const closedRoutes = [MAIN_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE]
 
   return (
     <div className={styles.header}>
@@ -17,7 +18,7 @@ const Header: React.FC = () => {
         </div>
       </Link>
       <ul className={styles.row}>
-        {location.pathname !== `${MAIN_ROUTE}` && 
+        {!closedRoutes.includes(location.pathname) && 
           <>
             <li className={styles.item}>
               <Search/>

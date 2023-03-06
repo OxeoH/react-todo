@@ -17,7 +17,7 @@ const GroupTable: React.FC = observer(() => {
   }
   const {groupStore, sortStore} = useStore()
 
-  let currentGrous = groupStore.groups.filter(group => group.name.toLowerCase().includes(sortStore.groupSearch.toLowerCase()))
+  let currentGroups = groupStore.findGroupsByParameters()
 
   return (
     <div className={styles.container}>
@@ -28,7 +28,7 @@ const GroupTable: React.FC = observer(() => {
         <button className={styles.create} onClick={() => createGroup()}>Create New Group</button>
       </div>
       <div className={styles.table}>
-        {currentGrous.map((item) => (<Group key={item.id} id={item.id} name={item.name} todos={item.todos}/>))}
+        {currentGroups.map((item) => (<Group key={item.id} id={item.id} name={item.name} todos={item.todos}/>))}
       </div>
       {!groupStore.groups.length ? <div className={styles.empty}>☀️There are no active groups🍸</div> : <></>}
     </div>

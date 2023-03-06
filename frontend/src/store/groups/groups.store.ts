@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { RootStore } from "..";
+import { SortNames, SortTypes } from "../sorts/sorts.types";
 import { TodoType } from "../todos/todos.types";
 import { GroupType } from "./groups.types";
 
@@ -62,15 +63,50 @@ class GroupsStore{
         const groupIndex = this.findGroupIndex(id)
 
         const searchValue = this.rootStore.sortStore.todoSearch
+        const typeSort = this.rootStore.sortStore.filter.sortType
         
         if(typeof(groupIndex) !== "undefined" && groupIndex >= 0){
-            const groupTodos = this.groups[groupIndex].todos
+            let groupTodos = this.groups[groupIndex].todos
                 .filter(todo => todo.title.toLowerCase().includes(searchValue.toLowerCase()))
             
+            switch(typeSort){
+                case SortTypes.ALPHA_TYPE:
+                    return groupTodos.sort()
+                case SortTypes.ALPHA_TYPE_R:
+                    return groupTodos.sort().reverse()
+                case SortTypes.DEFAULT:
+                    return groupTodos
+                default:
+                    break
+            }
+
             return groupTodos
         }else{
             return []
         }
+    }
+
+    findGroupsByParameters(){
+        if(this.groups.length){
+            const searchValue = this.rootStore.sortStore.groupSearch
+            const typeSort = this.rootStore.sortStore.filter.sortType
+
+
+            let currentGroups = this.groups
+                    .filter(group => group.name.toLowerCase().includes(searchValue.toLowerCase()))
+                
+            switch(typeSort){
+                case SortTypes.ALPHA_TYPE:
+                    return currentGroups.sort()
+                case SortTypes.ALPHA_TYPE_R:
+                    return currentGroups.sort().reverse()
+                case SortTypes.DEFAULT:
+                    return currentGroups
+                default:
+                    break
+            }
+        }
+        return []
     }
 
     findTodoIndex(id: string, groupIndex: number){

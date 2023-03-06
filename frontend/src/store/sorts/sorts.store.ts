@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { RootStore } from "..";
-import { defaultSort, Sort } from "./sorts.types";
+import { Sort, SortNames, SortTypes } from "./sorts.types";
 
 class SortStore{
     todoSearch: string
@@ -12,12 +12,12 @@ class SortStore{
         this.rootStore = rootStore
         this.todoSearch = ''
         this.groupSearch = ''
-        this.filter = defaultSort
+        this.filter = {name: SortNames.DEFAULT, sortType: SortTypes.DEFAULT}
         makeAutoObservable(this) 
     }
 
     resetFilter(){
-        this.filter = defaultSort
+        this.filter = {name: SortNames.DEFAULT, sortType: SortTypes.DEFAULT}
     }
 
     setTodoSearch(searchString: string){
@@ -31,5 +31,10 @@ class SortStore{
         this.groupSearch = this.todoSearch = ''
     }
 
+    setFilter(sort: Sort){
+        this.filter = sort
+        console.log(this.filter);
+        
+    }
 }
 export default SortStore
