@@ -35,6 +35,22 @@ export class TodosService{
     public async deleteTodosFromGroup(todos: Todo[]){
         todos.map(todo => this.todosRepository.delete({id: todo.id}))
     }
+
+    public async changeTodoStatus(todoId: string, group: Group){
+        const candidate = await this.todosRepository.findOne({where: {id: todoId, group}})
+        if(candidate){
+            await this.todosRepository
+                .createQueryBuilder()
+                .update(Todo)
+                .set({completed: !candidate.completed})
+                .where("id = :id", { id: todoId })
+                .execute()
+
+            return true
+        }else{
+            return false
+        }
+    }
 }
 
 export default new TodosService

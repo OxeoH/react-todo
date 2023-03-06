@@ -11,7 +11,7 @@ todosRouter.post('/delete', async (req: Request, res: Response) => {
     await todosController.deleteTodo(req, res);
 })
 
-todosRouter.post('/update/:id', async (req: Request, res: Response) => {
+todosRouter.post('/check', async (req: Request, res: Response) => {
     await todosController.updateTodoStatus(req, res);
 })
 

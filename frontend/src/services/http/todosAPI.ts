@@ -20,3 +20,15 @@ export const deleteTask = async (todoId: string, groupId: string) => {
     
     return ''
 }
+
+export const changeTaskStatus = async (todoId: string, groupId: string) => {
+    const token = localStorage.getItem('token') || ''
+    const response = await $authHost.post<{result: boolean}>("api/todos/check", {todoId, groupId, token})
+    console.log(response.data.result);
+    if(response.status === 200){
+        return response.data.result
+    }else{
+        return false
+    }
+    
+}

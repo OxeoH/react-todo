@@ -29,7 +29,20 @@ class TodosController{
 
     public async updateTodoStatus(req: Request, res: Response){
         try{
-            
+            const {todoId, groupId, token} = req.body
+            const userData = verifyTokenMiddleware(token)
+            if(userData){
+                const group = await groupsService.getGroupById(groupId)
+                if(group){
+                    const result = await todoService.changeTodoStatus(todoId, group)
+                    
+                    res.status(200).json({result})
+                }else{
+                    res.status(400).json({message: `Error: Cannot find task`})
+                }
+            }else{
+                res.status(403).json({message: `Error: Wrong token`})
+            }
         }catch(e){
             res.status(500).json({message: `Error: ${e}`})
         }
