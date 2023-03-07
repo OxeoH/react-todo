@@ -1,0 +1,40 @@
+@import '../../styles/variables';
+
+.container{
+    @include popUp();
+}
+
+.submit{
+    @include mintButton();
+    font-size: 18px;
+}
+
+.cross{
+    user-select: none;
+    background: $mintOcean;
+    font-weight: 900;
+    padding: 6px 12px;
+    border-radius: 1rem ;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
+
+.form{
+    @include form();
+
+}
+
+.fieldWrap{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.field{
+    @include input();
+}
+
+.label{
+    @include label();
+}

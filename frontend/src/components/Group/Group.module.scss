@@ -31,17 +31,28 @@
         color: rgba(255, 255, 255, 0.7);
     }
 }
-.cross{
-    @include shadowAnimation();
-    &:hover{
-        background: $mintOcean;
-    }
-    position: absolute;
-    right: 6px;
-    top: 6px;
-    background: $specialGrey;
+.tool{
     color: white;
     font-weight: 700;
     padding: 4px 10px;
     border-radius: 50%;
+    margin-bottom: 6px;
+    justify-content: center;
+    align-items: center;
+    max-width: 40px;
+}
+
+.tools{
+    position: absolute;
+    right: 6px;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit{
+    width: 100%;
+    object-fit: cover;
 }

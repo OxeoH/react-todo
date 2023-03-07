@@ -40,6 +40,16 @@ class GroupsStore{
         this.groups.push(group)
     }
 
+    editGroupName(groupId: string, newName: string){
+        const index = this.findGroupIndex(groupId)
+
+        if(index < 0) {
+            alert("Error: Cannot find this group")
+        }else{
+            this.groups[index].name = newName
+        }
+    }
+
     deleteGroup(id: string){
         const index = this.findGroupIndex(id)
         if(index < 0) alert("Error: Cannot find this group")

@@ -41,6 +41,22 @@ class GroupsController{
         }
     }
 
+    public async editGroupName(req: Request, res: Response){
+        try{
+            const {groupId, newName, token} = req.body
+            const userData = verifyTokenMiddleware(token)
+            if(userData){
+                const result = await groupsService.editName(groupId, newName)
+                
+                res.status(200).json({result})
+            }else{
+                res.status(403).json({message: `Error: Wrong token`})
+            }
+        }catch(e){
+            res.status(500).json({message: `Error: ${e}`})
+        }
+    }
+
     public async deleteGroup(req: Request, res: Response){
         try{
             try{

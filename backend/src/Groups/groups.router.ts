@@ -15,4 +15,9 @@ groupsRouter.post('/clear', async (req: Request, res: Response) => {
     await groupsController.clearGroup(req, res);
 })
 
+groupsRouter.post('/edit', async (req: Request, res: Response) => {
+    await groupsController.editGroupName(req, res);
+})
+
+
 export default groupsRouter

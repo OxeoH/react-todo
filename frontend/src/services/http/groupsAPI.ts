@@ -27,3 +27,15 @@ export const clearGroup = async (groupId: string) =>{
     console.log(response.status);
 }
 
+export const editGroup = async (groupId: string, newName: string) => {
+    const token = localStorage.getItem('token') || ''
+    const response = await $authHost.post<{result: boolean}>("api/groups/edit", {groupId, newName, token})
+    console.log(response.data);
+    if(response.status === 200){
+        return response.data.result
+    }
+
+    return false
+    
+}
+

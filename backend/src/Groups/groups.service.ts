@@ -60,6 +60,24 @@ class GroupService{
         }
         return null
     }
+
+    public async editName(groupId: string, newName: string){
+        const candidate = await this.getGroupById(groupId)
+        console.log(groupId, newName);
+        
+        if(candidate){            
+            const updatedGroup = await this.groupRepository
+                .createQueryBuilder()
+                .update(Group)
+                .set({name: newName})
+                .where("id = :id", { id: candidate.id })
+                .execute()
+
+            return true
+        }else{
+            return false
+        }
+    }
 }
 
 export default new GroupService
