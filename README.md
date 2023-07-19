@@ -1,3 +1,15 @@
+# Todo App
+![image](https://github.com/OxeoH/react-todo/assets/82836661/470f9ce3-dd56-4fb8-a430-78f626234618)
+
+Stack (PERN):
+### `PostgreSQL`
+### `Express.js`
+### `React`
+### `Typescript`
+### `MobX`
+
+## You can also check the [deployment](https://main--cheery-cocada-85c1b1.netlify.app/).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
