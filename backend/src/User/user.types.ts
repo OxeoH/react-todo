@@ -1,9 +1,10 @@
-export type AuthProps={
-    login: string,
-    password: string
-}
+export type AuthProps = {
+  login: string;
+  password: string;
+  admin: boolean;
+};
 
-export type userProps={
-    id: string,
-    login: string
-}
+export type userProps = {
+  id: string;
+  login: string;
+};

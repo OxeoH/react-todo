@@ -1,18 +1,21 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm"
-import { Group } from "../Groups/groups.entity"
-import { Todo } from "../Todo/todo.entity"
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Group } from "../Groups/groups.entity";
+import { Todo } from "../Todo/todo.entity";
 
 @Entity()
 export class User {
-    @PrimaryGeneratedColumn('uuid')
-    id: string
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @Column()
-    login: string
+  @Column()
+  login: string;
 
-    @Column()
-    password: string
+  @Column()
+  password: string;
 
-    @OneToMany(() => Group, (group: Group) => group.user)
-    groups: Group[]
+  @Column()
+  admin: boolean;
+
+  @OneToMany(() => Group, (group: Group) => group.user)
+  groups: Group[];
 }
